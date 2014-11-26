@@ -1,0 +1,81 @@
+%% General Commands %%
+% Graphic Path
+\graphicspath{{resource/}}
+% Graphic Extensions
+\DeclareGraphicsExtensions{.png,.jpg,.pdf}
+% Correct Symbol Strucuture
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+
+%% Creation of Commands %%
+% Print Association
+\newcommand{\associacaoescoteira}[1]{\def\imprimirassociacaoescoteira{#1 }}
+% Print Scout Group
+\newcommand{\grupoescoteiro}[1]{\def\imprimirgrupoescoteiro{Grupo Escoteiro #1 }}
+% Print Group Session
+\newcommand{\sessaodogrupo}[1]{\def\imprimirsessaodogrupo{#1 }}
+% Print Document Type
+\newcommand{\tipodedocumento}[1]{\def\imprimirtipodedocumento{#1 }}
+% Print Document Description
+\newcommand{\subtitulo}[1]{\def\imprimirsubtitulo{#1 }}
+% Generate Background Picture
+\newcommand\BackgroundPic
+{
+	\put(-3,0)
+	{
+		\parbox[b][\paperheight]{\paperwidth}
+		{
+			\vfill
+			\centering
+			\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{capa}
+			\vfill
+		}
+	}
+}
+
+%% Recreation of Commands %%
+% Print Cape
+\renewcommand{\imprimircapa}
+{
+	\begin{capa}
+		\center
+		\AddToShipoutPicture*{\BackgroundPic}
+
+		\vspace*{2.0cm}
+		{\textbf{\large\imprimirassociacaoescoteira}}
+		\par
+		{\textbf{\large\imprimirgrupoescoteiro}}
+		\par
+		{\textbf{\large\imprimirsessaodogrupo}}
+		\par
+		{\textbf{\large\imprimirtipodedocumento}}
+
+		\vspace*{5cm}
+		{\ABNTEXchapterfont\bfseries\huge\imprimirtitulo}
+
+		\vspace*{0.5cm}
+		{\LARGE\imprimirsubtitulo}
+		\vspace*{0.5cm}
+		
+		\vspace*{\fill}
+
+		\textbf{{\large\imprimirlocal}}
+   		\par
+		\textbf{{\large\imprimirdata}}
+	
+		\vspace*{3.5cm}
+  	\end{capa}
+}
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
